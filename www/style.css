@@ -1,0 +1,49 @@
+
+html body {
+    font-size: 12px;
+    font-family: Verdana;
+    background-color: #f2f2f2;
+}
+
+#title {
+	font-weight: bold;
+  font-size: 30px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#tables {
+	display: flex;
+  align-items: baseline;    /* top align with display: flex setting */
+  justify-content: center;  /* center content horizontally with display: flex setting */
+}
+
+table {
+  font-size: 12px;
+  padding: 10px;
+  display: inline-table;
+	white-space: nowrap;
+}
+
+td {
+  padding: 5px;
+}
+
+tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.table_header {
+  font-weight: bold;
+  text-align: center;
+}
+
+a {
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:hover {
+	color: blue;
+}
