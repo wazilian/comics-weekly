@@ -18,6 +18,7 @@ comics-weekly username password /var/www/html/txt DC Marvel Skybound
 0 0 * * 0 root /usr/bin/comics-weekly API_username API_password /var/www/html/txt DC Markvel Skybound
 ```
 * Copy the index.php and style.css files to a root or subdirectory of your webserver
+* Edit the $output_dir variable in index.php that points to the output text file location (I'll lump this into a 'make install' in a future revision)
 ### ABOUT
 There are plenty of apps and websites that can show you the current and upcoming comic books that will be on shelves in comic shops. I just don't like them. So, I created this project in a format that I enjoy and I get to use my software skills to accomplish this goal.
 
