@@ -10,7 +10,7 @@
 <?php
 
 $link_prepend = "https://metron.cloud/issue/";
-$txt_dir = "/var/www/html/txt";
+$output_dir = "/var/www/html/txt";
 $cmp_date = "Y-m-d";
 $display_date = "M j, Y";
 
@@ -23,7 +23,7 @@ $store_dates = Array(
 
 /* loop through each text file (3) and tabularly print the issue list */
 foreach ($store_dates as $date => $str) {
-  $lines = file($txt_dir . "/" . $date . ".txt", FILE_IGNORE_NEW_LINES);
+  $lines = file($output_dir . "/" . $date . ".txt", FILE_IGNORE_NEW_LINES);
 
   echo "<table>";
   echo "<tr>";
