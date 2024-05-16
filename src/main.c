@@ -19,8 +19,6 @@ const int HTTP_REQUEST_MAX = 512;
 const int SYS_INFO_MAX = 256;
 const int PULL_WEEKS = 3;
 
-Publisher *headPublisher;   /* typedef defined in global.h */
-
 /* HTTP_REQUEST_TEMPLATE string template
   string parameter:
 
@@ -49,7 +47,6 @@ int main(int argc, char *argv[]) {
   struct utsname uts;
   char systemInfo[SYS_INFO_MAX];
   int i;
-  Publisher *publishers;
   char http_request[512];
   char *json_packet;
   cJSON *json_ob, *results;
@@ -75,7 +72,7 @@ int main(int argc, char *argv[]) {
   /* remove all <store date>.OUTPUT_FILE_EXT files from given directory */
   if ((dir = opendir(output_dir)) == NULL) {
     printf("\n\tError: %s could not be opened. Permissions?\n\n", output_dir);
-    return 0;
+    return -1;
   } else {
     while ((file_ptr = readdir(dir)) != NULL) {
       /* only remove file if its extension is OUTPUT_FILE_EXT */
@@ -84,7 +81,8 @@ int main(int argc, char *argv[]) {
         snprintf(temp, 512, "%s/%s", output_dir, file_ptr->d_name);
 
         if (remove(temp) != 0) {
-          printf("\t\nError: %s could not be deleted. Permissions?\n", temp);
+          printf("\n\tError: %s could not be deleted. Permissions?\n\n", temp);
+          return -1;
         }
       }
     }
@@ -101,9 +99,9 @@ int main(int argc, char *argv[]) {
   uname(&uts);
   snprintf(systemInfo, SYS_INFO_MAX, "%s %s/%s", uts.sysname, uts.machine, uts.release);
 
-  /* get list of comic publishers from the command line */
-  for (i = 4; i < argc; i++) {
-    addPublisher(argv[i]);
+  /* open the 3 output text files for the last, current, and next weeks */
+  if (!open_output_files(&fp_last_week, &fp_this_week, &fp_next_week, output_dir, storeDates)) {
+    return -1;
   }
 
   /* initialize the TLS connection */
@@ -112,19 +110,12 @@ int main(int argc, char *argv[]) {
   /* start the TLS connection */
   connect_TLS(SERVER_NAME, SERVER_PORT);
 
-  /* open the 3 output text files for the last, current, and next weeks */
-  if (!open_output_files(&fp_last_week, &fp_this_week, &fp_next_week, output_dir, storeDates)) {
-    disconnect_TLS();
-    return 1;
-  }
-
   /* loop through the publishers list and obtain JSON packet for each */
-  publishers = headPublisher;
-  while (publishers) {
+  for (i = 4; i < argc; i++) {
     /* build out the HTTP request string for store date */
     memset(http_request, 0, HTTP_REQUEST_MAX);
     snprintf(http_request, HTTP_REQUEST_MAX, HTTP_REQUEST_TEMPLATE,
-            publishers->data, storeDates[0], storeDates[2],
+            argv[i], storeDates[0], storeDates[2],
             SERVER_NAME, SERVER_PORT,
             APP_NAME, VERSION, systemInfo, get_TLS_version(),
             base64UnP);
@@ -168,7 +159,6 @@ int main(int argc, char *argv[]) {
     free(json_packet);
     json_packet = NULL;
     cJSON_Delete(json_ob);
-    publishers = publishers->next;
   }
 
   /* disconnect TLS */

@@ -52,28 +52,6 @@ void getStoreDates(char **dates) {
   }
 }
 
-/* add publisher to list */
-void addPublisher(char *data) {
-  Publisher *newPublisher = malloc(sizeof(Publisher));
-
-  /* check if memory was available */
-  if (newPublisher == NULL) {
-    exit(1);
-  }
-
-  /* if list is empty */
-  if (headPublisher == NULL) {
-    headPublisher = newPublisher;
-    newPublisher->next = NULL;
-  } else {
-    newPublisher->next = headPublisher;
-    headPublisher = newPublisher;
-  }
-
-  newPublisher->data = malloc(strlen(data) + 1);
-  strcpy(newPublisher->data, data);
-}
-
 /* function to open the provided output text files */
 int open_output_files(FILE **fp1, FILE **fp2, FILE **fp3, char *dir, char **storeDates) {
   char filename[255];
