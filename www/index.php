@@ -1,4 +1,8 @@
 
+<?php
+include "global.php";   /* easier to find $output_dir */
+?>
+
 <html>
   <head>
     <link rel="stylesheet" href="style.css">
@@ -10,7 +14,6 @@
 <?php
 
 $link_prepend = "https://metron.cloud/issue/";
-$output_dir = "/var/www/html/txt";
 $cmp_date = "Y-m-d";
 $display_date = "M j, Y";
 

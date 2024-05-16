@@ -10,15 +10,17 @@ comics-weekly <Metron username> <Metron password> <text files directory> <list o
 comics-weekly username password /var/www/html/txt DC Marvel Skybound
 ```
 ### INSTALL
-* Clone a copy of the Mbed TLS project (https://github.com/Mbed-TLS/mbedtls) and edit the comics-weekly Makefile variable TLS_TREE to point to the Mbed TLS directory
+* Clone this repository
+* Clone a copy of the Mbed TLS project (https://github.com/Mbed-TLS/mbedtls)
+* Edit the comics-weekly Makefile variable TLS_TREE in this repository to point to the Mbed TLS directory
 * Run make
 * Copy the comics-weekly executable to a directory of choice
-* Configre comics-weekly to run at midnight on Sunday
+* Configure comics-weekly to run at midnight on Sunday
 ```
 0 0 * * 0 root /usr/bin/comics-weekly API_username API_password /var/www/html/txt DC Markvel Skybound
 ```
-* Copy the index.php and style.css files to a root or subdirectory of your webserver
-* Edit the $output_dir variable in index.php that points to the output text file location (I'll lump this into a 'make install' in a future revision)
+* Copy the index.php, global.php and style.css files to a root or subdirectory of your webserver
+* Edit the $output_dir variable in global.php that points to the output text file location (I'll lump this into a 'make install' in a future revision)
 ### ABOUT
 There are plenty of apps and websites that can show you the current and upcoming comic books that will be on shelves in comic shops. I just don't like them. So, I created this project in a format that I enjoy and I get to use my software skills to accomplish this goal.
 
