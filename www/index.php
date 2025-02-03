@@ -16,12 +16,18 @@ include "global.php";   /* easier to find $output_dir */
 $link_prepend = "https://metron.cloud/issue/";
 $cmp_date = "Y-m-d";
 $display_date = "M j, Y";
+$current_time = time();
+
+/* the "PHP" week starts on Monday. The "C" week starts on Sunday, so add a day to time */
+if (date("D") == "Sun") {
+  $current_time += 86400;     /* seconds in a day */
+}
 
 /* grab the dates for the Wednesday of the previous, current, and next weeks */
 $store_dates = Array(
-  date($cmp_date, strtotime("Wednesday last week")) => "Last Week",
-  date($cmp_date, strtotime("Wednesday this week")) => "This Week",
-  date($cmp_date, strtotime("Wednesday next week")) => "Next Week"
+  date($cmp_date, strtotime("Wednesday last week", $current_time)) => "Last Week",
+  date($cmp_date, strtotime("Wednesday this week", $current_time)) => "This Week",
+  date($cmp_date, strtotime("Wednesday next week", $current_time)) => "Next Week"
 );
 
 /* loop through each text file (3) and tabularly print the issue list */
