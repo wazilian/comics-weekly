@@ -41,7 +41,7 @@ foreach ($store_dates as $date => $str) {
 
   foreach ($lines as $issue) {
     /* create this issue's link */
-    $issue_link = preg_replace("/[()#!':,.\/]/", "", $issue);
+    $issue_link = preg_replace("/[–()#!&':,.\/]/", "", $issue);
     $issue_link = preg_replace("/\s+/", "-", $issue_link);
     $issue_link = $link_prepend . strtolower($issue_link) . "/";
 
