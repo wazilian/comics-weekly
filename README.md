@@ -24,7 +24,7 @@ comics-weekly username password /var/www/html/txt DC Marvel Skybound
 ### ABOUT
 There are plenty of apps and websites that can show you the current and upcoming comic books that will be on shelves in comic shops. I just don't like them. So, I created this project in a format that I enjoy and I get to use my software skills to accomplish this goal.
 
-New Comic Book Day is Wednesdays. Don't get me started on DC Comics and their decision in 2020 to move their new book day to Tuesdays (Grr). DC is moving back to Wednesdays this summer (July 2024).
+New Comic Book Day is Wednesdays. Don't get me started on DC Comics and their decision in 2020 to move their new book day to Tuesdays (Grr). DC moved their sale day back to Wednesday in July 2024, ya grouch.
 
 To obtain the list of comics for the current week, previous week, and the comics coming the following week, I chose to write a C program. I chose C for a few reasons. Its my favorite language to code in. Plus, I wanted to use the TLS library, Mbed TLS (https://github.com/Mbed-TLS/mbedtls), to make an HTTP request to a comic book API. I've used this library in the past for a work project and really enjoyed using it, especially for an embedded project. They had made some changes to the library since I last used it, so I wanted to take the opportunity to become familiar with the library as it is now.
 

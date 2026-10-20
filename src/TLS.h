@@ -1,6 +1,4 @@
 
-/* check TLS.c for function comments */
-
 char *get_TLS_version();
 
 void init_TLS();

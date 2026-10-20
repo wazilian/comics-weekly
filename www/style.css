@@ -1,49 +1,56 @@
 
+:root {
+	--primary-bg-color: #131416;
+	--alternate-row: #34383d;
+	--primary-text-color: #dee0e3;
+
+	--blue:	 #4797ff;
+}
+
 html body {
-    font-size: 12px;
-    font-family: Verdana;
-    background-color: #f2f2f2;
+	font-family: Calibri, sans-serif;
+	color: var(--primary-text-color);
+	background-color: var(--primary-bg-color);
 }
 
 #title {
 	font-weight: bold;
-  font-size: 30px;
+	font-size: 40px;
 	text-align: center;
-	margin-bottom: 20px;
 }
 
-#tables {
+#container {
 	display: flex;
-  align-items: baseline;    /* top align with display: flex setting */
-  justify-content: center;  /* center content horizontally with display: flex setting */
+	align-items: baseline;		/* top align with display: flex setting */
+	justify-content: center;	/* center content horizontally with display: flex setting */
 }
 
 table {
-  font-size: 12px;
-  padding: 10px;
-  display: inline-table;
+	width: 400px;
+	font-size: 15px;
+	padding: 10px;
+	display: inline-table;
+	table-layout: fixed;
 	white-space: nowrap;
 }
 
-td {
-  padding: 5px;
+th, td {
+	padding: 5px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 tr:nth-child(even) {
-  background-color: #ffffff;
-}
-
-.table_header {
-  font-weight: bold;
-  text-align: center;
+	background-color: var(--alternate-row);
 }
 
 a {
-  color: black;
-  cursor: pointer;
-  text-decoration: none;
+	color: var(--primary-text-color);
+	cursor: pointer;
+	text-decoration: none;
 }
 
 a:hover {
-	color: blue;
+	color: var(--blue);
 }

@@ -1,4 +1,4 @@
 
-/* check base64.c for function comments */
+char *base_64_encode(char *, size_t, size_t *);
 
-char *base64Encode(char *, size_t, size_t *);
+char *get_base_64_creds(char *username, char *password);

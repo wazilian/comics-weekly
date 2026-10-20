@@ -1,7 +1,8 @@
 
 EXE			= comics-weekly
-CC			= gcc -D APP_NAME='"$(EXE)"'
-CFLAGS	= -Wall -Wextra
+VERSION		= 2.0
+CC			= gcc -D APP_NAME='"$(EXE)"' -D VERSION='"$(VERSION)"'
+CFLAGS		= -Wall -Wextra
 
 # mbedTLS library, point TLS_TREE to the location of the Mbed TLS directory
 TLS_TREE	+= ../mbedtls
