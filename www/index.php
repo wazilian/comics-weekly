@@ -5,7 +5,9 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<div id="title">Comics Weekly</div>
+		<div id="title">
+			<a href="https://github.com/wazilian/comics-weekly" target="_blank">Comics Weekly</a>
+		</div>
 		<div id="container">
 
 <?php
